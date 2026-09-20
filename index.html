@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Funnel designs and strategy maps for healthcare, legal, insurance, real estate and local service businesses." />
+<title>Auon | Funnel Design Portfolio</title>
+<style>
+:root{--bg:#090b0f;--surface:#101319;--border:rgba(255,255,255,.09);--text:#f4f5f7;--muted:#9da4b0;--radius:18px;--max:1280px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at 15% 0,rgba(255,255,255,.07),transparent 28%),var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(18px);background:rgba(9,11,15,.8);border-bottom:1px solid var(--border)}
+.nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:750}
+.brand-mark{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:#fff;color:#090b0f;font-weight:900}
+.nav-links{display:flex;gap:26px;color:var(--muted);font-size:14px}
+.nav-links a:hover{color:#fff}
+.hero{padding:96px 0 56px}
+.hero h1{max-width:820px;font-size:clamp(42px,6.4vw,80px);line-height:1;letter-spacing:-.05em}
+.hero p{max-width:600px;margin-top:24px;color:var(--muted);font-size:18px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{padding:12px 20px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.04);cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:#fff;border-color:#fff;color:#090b0f;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px}
+.stat{padding:22px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.025)}
+.stat b{display:block;font-size:30px;letter-spacing:-.04em}
+.stat span{color:var(--muted);font-size:13px}
+section{padding:64px 0}
+.heading{margin-bottom:28px}
+.heading h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.04em;line-height:1.05}
+.heading p{max-width:560px;margin-top:10px;color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:26px}
+.search{flex:1 1 260px;max-width:340px;padding:11px 15px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--border);background:rgba(255,255,255,.04);color:#aeb5c0;padding:8px 14px;border-radius:999px;cursor:pointer;font-size:13px}
+.chip:hover,.chip.active{background:#fff;color:#090b0f;border-color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{border:1px solid var(--border);background:var(--surface);border-radius:var(--radius);overflow:hidden;cursor:pointer;text-align:left;display:block;width:100%;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
+.card .thumb{aspect-ratio:4/3;background:#0d1015;overflow:hidden}
+.card img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.card-body{padding:16px 18px 18px}
+.card-cat{color:#8f97a4;font-size:12px}
+.card-title{margin-top:2px;font-size:19px;font-weight:750;letter-spacing:-.02em}
+.card-sum{margin-top:4px;color:var(--muted);font-size:13px}
+.msg{padding:60px 20px;text-align:center;border:1px dashed var(--border);border-radius:var(--radius);color:var(--muted);grid-column:1/-1}
+.flow{display:flex;align-items:stretch;overflow-x:auto;padding:6px 0 20px;gap:0}
+.step{flex:0 0 190px;border:1px solid var(--border);border-radius:14px;background:var(--surface);overflow:hidden;cursor:pointer;text-align:left}
+.step img{display:block;width:100%;height:130px;object-fit:cover;object-position:top}
+.step span{display:block;padding:10px 12px;font-size:13px;font-weight:650}
+.arrow{align-self:center;padding:0 12px;color:#5f6672;font-size:20px}
+.about{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.about div{padding:22px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.025)}
+.about h3{font-size:17px;margin-bottom:6px}
+.about p{color:var(--muted);font-size:14px}
+footer{margin-top:60px;padding:40px 0;border-top:1px solid var(--border);color:#737b88;font-size:13px}
+.lb{position:fixed;inset:0;z-index:1000;display:none;flex-direction:column;align-items:center;background:rgba(0,0,0,.94);padding:70px 20px 70px}
+.lb.open{display:flex}
+.lb-scroll{overflow:auto;max-height:100%;width:min(94vw,1100px);border-radius:10px;background:#0d1015}
+.lb-scroll img{display:block;width:100%;height:auto}
+.lb button.ctl{position:fixed;width:44px;height:44px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.1);border-radius:50%;cursor:pointer;font-size:20px;z-index:2}
+.lb-close{top:16px;right:16px}
+.lb-prev{left:14px;top:50%}
+.lb-next{right:14px;top:50%}
+.lb-info{position:fixed;left:20px;bottom:16px;z-index:2}
+.lb-info b{display:block;font-size:17px}
+.lb-info span,.lb-count{color:#9ca3af;font-size:13px}
+.lb-count{position:fixed;right:20px;bottom:18px;z-index:2}
+@media(max-width:800px){
+.nav-links{display:none}.hero{padding:64px 0 40px}.stats{grid-template-columns:repeat(2,1fr)}
+.about{grid-template-columns:1fr}section{padding:44px 0}.lb-prev{left:6px}.lb-next{right:6px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="brand"><span class="brand-mark">A</span><span>Auon</span></a>
+    <div class="nav-links">
+      <a href="#work">Projects</a>
+      <a href="#flow">Funnel flow</a>
+      <a href="#about">About</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <h1>Funnel design for service businesses.</h1>
+    <p>Browse funnel designs by industry, screen by screen, with supporting strategy maps where available.</p>
+    <div class="actions">
+      <a href="#work" class="btn primary">View projects</a>
+      <a href="#flow" class="btn">See a funnel step by step</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="stats">
+      <div class="stat"><b id="sCases">-</b><span>Funnel projects</span></div>
+      <div class="stat"><b id="sIndustries">-</b><span>Industries</span></div>
+      <div class="stat"><b id="sSteps">-</b><span>Funnel screens</span></div>
+      <div class="stat"><b id="sMaps">-</b><span>Strategy maps</span></div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="container">
+      <div class="heading">
+        <h2>Projects by industry</h2>
+        <p>Open a project to view every screen and strategy map in full size.</p>
+      </div>
+      <div class="tools">
+        <input id="search" class="search" type="search" placeholder="Search by industry" aria-label="Search projects" />
+        <div id="chips" class="chips"></div>
+      </div>
+      <div id="grid" class="grid"><div class="msg">Loading projects...</div></div>
+    </div>
+  </section>
+
+  <section id="flow">
+    <div class="container">
+      <div class="heading">
+        <h2>Funnel flow</h2>
+        <p>Choose a project to see its funnel in order, from the first screen to the last.</p>
+      </div>
+      <div id="flowChips" class="chips" style="margin-bottom:20px"></div>
+      <div id="flowSteps" class="flow"></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="heading">
+        <h2>What each project includes</h2>
+      </div>
+      <div class="about">
+        <div><h3>Funnel screens</h3><p>Each page of the funnel shown in sequence, so you can follow the visitor's path from start to finish.</p></div>
+        <div><h3>Strategy maps</h3><p>Mind maps that plan the structure and flow of a funnel. Included on selected projects.</p></div>
+        <div><h3>Industry range</h3><p>Healthcare, legal, insurance, real estate, fitness and home services.</p></div>
+      </div>
+      <div class="actions" id="contact" hidden></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="container">&copy; <span id="year"></span> Auon</div></footer>
+
+<div id="lb" class="lb" role="dialog" aria-modal="true" aria-label="Project viewer">
+  <button class="ctl lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="ctl lb-prev" id="lbPrev" aria-label="Previous">&lsaquo;</button>
+  <div class="lb-scroll" id="lbScroll"><img id="lbImg" src="" alt="" /></div>
+  <button class="ctl lb-next" id="lbNext" aria-label="Next">&rsaquo;</button>
+  <div class="lb-info"><b id="lbTitle"></b><span id="lbSub"></span></div>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<script>
+/* ---------- Settings you can edit ---------- */
+const CONTACT = { email: "", linkedin: "" };   // add either to show a contact button
+
+// Client-facing names. Key = niche from the filename, lowercase, letters only.
+const NICHES = {
+  cleaning:         { name: "Cleaning Services",    category: "Home & Lifestyle" },
+  dentalservice:    { name: "Dental Services",      category: "Healthcare" },
+  fitnesscoaching:  { name: "Fitness Coaching",     category: "Home & Lifestyle" },
+  heartspecialist:  { name: "Cardiology Practice",  category: "Healthcare" },
+  insurancecompany: { name: "Insurance",            category: "Professional Services" },
+  lawyerfunnel:     { name: "Legal Services",       category: "Professional Services" },
+  oncologyfunnel:   { name: "Oncology Care",        category: "Healthcare" },
+  realestate:       { name: "Real Estate",          category: "Real Estate" }
+};
+
+/* ---------- Data ---------- */
+const TYPES = {
+  funnel:      { single: "Funnel screen", plural: "funnel screens", order: 0 },
+  landingpage: { single: "Landing page",  plural: "landing pages",  order: 1 },
+  website:     { single: "Website",       plural: "websites",       order: 2 },
+  automation:  { single: "Automation",    plural: "automations",    order: 3 },
+  mindmap:     { single: "Strategy map",  plural: "strategy maps",  order: 4 }
+};
+const IMG = /\.(png|jpe?g|webp|gif|avif)$/i;
+const NAME = /^P(\d+)-(.+?)-(Funnel|MindMap|Website|LandingPage|Automation)-(.+)$/i;
+
+let cases = [], view = [], category = "All", lbCase = null, lbIndex = 0;
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+const url = p => "./" + p.split("/").map(encodeURIComponent).join("/");
+const plural = (n, t) => `${n} ${n === 1 ? t.single.toLowerCase() : t.plural}`;
+
+function tidy(s) {
+  return s.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/[-_]+/g, " ").replace(/\b\w/g, c => c.toUpperCase()).trim();
+}
+
+function buildCases(paths) {
+  const byProject = new Map();
+  paths.filter(p => IMG.test(p)).forEach(path => {
+    const m = path.split("/").pop().replace(/\.[^.]+$/, "").match(NAME);
+    if (!m) return;                                   // ignore files that don't follow the naming pattern
+    const n = parseInt(m[1], 10), nicheRaw = m[2];
+    const key = nicheRaw.toLowerCase().replace(/[^a-z]/g, "");
+    if (!byProject.has(n)) {
+      const meta = NICHES[key] || { name: tidy(nicheRaw).replace(/ Funnel$/i, ""), category: "Other" };
+      byProject.set(n, { n, name: meta.name, category: meta.category, items: [] });
+    }
+    byProject.get(n).items.push({
+      path, type: m[3].toLowerCase(),
+      num: parseInt((m[4].match(/\d+/) || [9999])[0], 10)
+    });
+  });
+
+  const list = [...byProject.values()].sort((a, b) => a.n - b.n);
+  const seen = {}, totals = {};
+  list.forEach(c => totals[c.name] = (totals[c.name] || 0) + 1);
+
+  list.forEach(c => {
+    seen[c.name] = (seen[c.name] || 0) + 1;
+    c.title = totals[c.name] > 1 ? `${c.name}, Funnel ${seen[c.name]}` : c.name;
+    c.items.sort((a, b) => TYPES[a.type].order - TYPES[b.type].order || a.num - b.num);
+    const count = {};
+    c.items.forEach(i => count[i.type] = (count[i.type] || 0) + 1);
+    c.counts = count;
+    c.items.forEach(i => {
+      const t = TYPES[i.type];
+      i.label = count[i.type] > 1 ? `${t.single} ${i.num} of ${count[i.type]}` : t.single;
+    });
+    c.cover = (c.items.find(i => i.type === "funnel") || c.items[0]).path;
+    c.summary = Object.keys(TYPES).filter(k => count[k]).map(k => plural(count[k], TYPES[k])).join(", ");
+    c.funnel = c.items.filter(i => i.type === "funnel");
+  });
+  return list;
+}
+
+async function loadPaths() {
+  try {                                               // 1. manifest (fast, no rate limits)
+    const r = await fetch("manifest.json", { cache: "no-cache" });
+    if (r.ok) return (await r.json()).files;
+  } catch (e) {}
+  const owner = location.hostname.replace(".github.io", "");   // 2. fallback: GitHub API
+  const repo = location.pathname.split("/").filter(Boolean)[0] || "portfolio";
+  const r = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees/main?recursive=1`);
+  if (!r.ok) throw new Error(`Could not load manifest.json or GitHub file list (${r.status}).`);
+  return (await r.json()).tree.filter(f => f.type === "blob").map(f => f.path);
+}
+
+/* ---------- Rendering ---------- */
+function renderStats() {
+  const all = cases.flatMap(c => c.items);
+  $("sCases").textContent = cases.length;
+  $("sIndustries").textContent = new Set(cases.map(c => c.name)).size;
+  $("sSteps").textContent = all.filter(i => i.type === "funnel").length;
+  $("sMaps").textContent = all.filter(i => i.type === "mindmap").length;
+}
+
+function renderChips() {
+  const cats = ["All", ...new Set(cases.map(c => c.category))];
+  $("chips").innerHTML = cats.map(c =>
+    `<button class="chip${c === category ? " active" : ""}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b => b.onclick = () => { category = b.dataset.c; renderChips(); renderGrid(); });
+}
+
+function renderGrid() {
+  const q = $("search").value.toLowerCase().trim();
+  view = cases.filter(c => (category === "All" || c.category === category) &&
+    (!q || `${c.title} ${c.category}`.toLowerCase().includes(q)));
+  if (!view.length) { $("grid").innerHTML = `<div class="msg">No projects match. Clear the search or choose another industry.</div>`; return; }
+  $("grid").innerHTML = view.map((c, i) => `
+    <button class="card" data-i="${i}" aria-label="Open ${esc(c.title)}">
+      <div class="thumb"><img src="${url(c.cover)}" alt="${esc(c.title)} funnel preview" loading="lazy" /></div>
+      <div class="card-body">
+        <div class="card-cat">${esc(c.category)}</div>
+        <div class="card-title">${esc(c.title)}</div>
+        <div class="card-sum">${esc(c.summary)}</div>
+      </div>
+    </button>`).join("");
+  $("grid").querySelectorAll(".card").forEach(b => b.onclick = () => openLb(view[+b.dataset.i], 0));
+}
+
+function renderFlow(selected) {
+  const withFunnel = cases.filter(c => c.funnel.length);
+  if (!withFunnel.length) { $("flowSteps").innerHTML = `<div class="msg">No funnels to show yet.</div>`; return; }
+  const sel = selected || withFunnel.reduce((a, b) => b.funnel.length > a.funnel.length ? b : a);
+  $("flowChips").innerHTML = withFunnel.map(c =>
+    `<button class="chip${c === sel ? " active" : ""}" data-n="${c.n}">${esc(c.title)}</button>`).join("");
+  $("flowChips").querySelectorAll(".chip").forEach(b => b.onclick = () => renderFlow(cases.find(c => c.n === +b.dataset.n)));
+  $("flowSteps").innerHTML = sel.funnel.map((it, i) => `
+    ${i ? `<div class="arrow" aria-hidden="true">&rarr;</div>` : ""}
+    <button class="step" data-i="${i}"><img src="${url(it.path)}" alt="${esc(sel.title)} ${esc(it.label)}" loading="lazy" /><span>${esc(it.label)}</span></button>`).join("");
+  $("flowSteps").querySelectorAll(".step").forEach(b => b.onclick = () => openLb(sel, +b.dataset.i));
+}
+
+/* ---------- Viewer ---------- */
+function openLb(c, i) {
+  lbCase = c; lbIndex = (i + c.items.length) % c.items.length;
+  const it = c.items[lbIndex];
+  $("lbImg").src = url(it.path);
+  $("lbImg").alt = `${c.title}, ${it.label}`;
+  $("lbTitle").textContent = it.label;
+  $("lbSub").textContent = c.title;
+  $("lbCount").textContent = `${lbIndex + 1} / ${c.items.length}`;
+  $("lbScroll").scrollTop = 0;
+  $("lb").classList.add("open");
+  document.body.style.overflow = "hidden";
+  $("lbClose").focus();
+}
+function closeLb() { $("lb").classList.remove("open"); document.body.style.overflow = ""; }
+
+$("lbClose").onclick = closeLb;
+$("lbNext").onclick = () => openLb(lbCase, lbIndex + 1);
+$("lbPrev").onclick = () => openLb(lbCase, lbIndex - 1);
+$("lb").onclick = e => { if (e.target.id === "lb") closeLb(); };
+$("search").oninput = renderGrid;
+document.addEventListener("keydown", e => {
+  if (!$("lb").classList.contains("open")) return;
+  if (e.key === "Escape") closeLb();
+  if (e.key === "ArrowRight") openLb(lbCase, lbIndex + 1);
+  if (e.key === "ArrowLeft") openLb(lbCase, lbIndex - 1);
+});
+
+/* ---------- Start ---------- */
+$("year").textContent = new Date().getFullYear();
+if (CONTACT.email || CONTACT.linkedin) {
+  $("contact").hidden = false;
+  $("contact").innerHTML =
+    (CONTACT.email ? `<a class="btn primary" href="mailto:${esc(CONTACT.email)}">Email me</a>` : "") +
+    (CONTACT.linkedin ? `<a class="btn" href="${esc(CONTACT.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>` : "");
+}
+
+loadPaths().then(paths => {
+  cases = buildCases(paths);
+  if (!cases.length) throw new Error("No images matching the naming pattern were found.");
+  renderStats(); renderChips(); renderGrid(); renderFlow();
+}).catch(err => {
+  $("grid").innerHTML = `<div class="msg">Projects could not be loaded. Refresh the page to try again.<br><small>${esc(err.message)}</small></div>`;
+});
+</script>
+</body>
+</html>
