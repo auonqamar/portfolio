@@ -886,71 +886,132 @@
 
     async function loadRepository() {
 
-      const apiUrl =
-        `https://api.github.com/repos/${OWNER}/${REPO}/contents/`;
+  const apiUrl =
+    `https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`;
 
-      try {
+  try {
 
-        const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl, {
+      headers: {
+        "Accept": "application/vnd.github+json"
+      }
+    });
 
-        if (!response.ok) {
-          throw new Error("Unable to access repository.");
+    if (!response.ok) {
+      throw new Error(
+        `GitHub API error: ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+
+    const files = data.tree || [];
+
+    assets = files
+
+      .filter(file => {
+
+        if (file.type !== "blob") {
+          return false;
         }
 
-        const files = await response.json();
+        const filename =
+          file.path.split("/").pop();
 
-        assets = files
-          .filter(file =>
-            file.type === "file" &&
-            imageExtensions.some(ext =>
-              file.name.toLowerCase().endsWith(ext)
-            )
-          )
-          .map(file => {
+        return imageExtensions.some(ext =>
+          filename.toLowerCase().endsWith(ext)
+        );
 
-            const parsed = parseFilename(file.name);
+      })
 
-            return {
-              ...parsed,
-              url: rawUrl(file.name)
-            };
+      .map(file => {
 
-          });
+        const filename =
+          file.path.split("/").pop();
 
-        assets.sort((a,b) => {
+        const parsed =
+          parseFilename(filename);
 
-          if (a.projectNumber !== b.projectNumber)
-            return a.projectNumber - b.projectNumber;
+        return {
+          ...parsed,
 
-          if (a.assetType !== b.assetType)
-            return a.assetType.localeCompare(b.assetType);
+          url:
+            `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${file.path
+              .split("/")
+              .map(part => encodeURIComponent(part))
+              .join("/")}`
+        };
 
-          if (a.number !== b.number)
-            return a.number - b.number;
+      });
 
-          return a.original.localeCompare(b.original);
+    assets.sort((a, b) => {
 
-        });
-
-        updateStats();
-        buildFilters();
-        renderGallery();
-        renderJourney();
-
-      } catch (error) {
-
-        document.getElementById("gallery").innerHTML = `
-          <div class="empty">
-            <h3>Portfolio could not be loaded.</h3>
-            <p style="margin-top:8px;">
-              Make sure the repository is public and the images are committed.
-            </p>
-          </div>
-        `;
-
-        console.error(error);
+      if (a.projectNumber !== b.projectNumber) {
+        return a.projectNumber - b.projectNumber;
       }
-    }
+
+      if (a.assetType !== b.assetType) {
+        return a.assetType.localeCompare(
+          b.assetType
+        );
+      }
+
+      if (a.number !== b.number) {
+        return a.number - b.number;
+      }
+
+      return a.original.localeCompare(
+        b.original,
+        undefined,
+        {
+          numeric: true,
+          sensitivity: "base"
+        }
+      );
+
+    });
+
+    console.log(
+      "Portfolio assets discovered:",
+      assets
+    );
+
+    updateStats();
+
+    buildFilters();
+
+    renderGallery();
+
+    renderJourney();
+
+  } catch (error) {
+
+    console.error(
+      "Portfolio loading error:",
+      error
+    );
+
+    document.getElementById("gallery").innerHTML = `
+      <div class="empty">
+
+        <h3>
+          Portfolio could not be loaded.
+        </h3>
+
+        <p style="margin-top:8px;">
+          GitHub was unable to provide the portfolio
+          assets. Please refresh the page and try again.
+        </p>
+
+        <p style="margin-top:8px;font-size:12px;">
+          ${escapeHtml(error.message)}
+        </p>
+
+      </div>
+    `;
+
+  }
+}
 
     function updateStats() {
 
