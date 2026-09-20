@@ -1,1 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A visual portfolio showcasing funnel designs, mindmaps, websites, and digital assets." />
+  <title>Funnel Portfolio — Auon</title>
 
+  <style>
+    :root {
+      --bg: #090b0f;
+      --surface: #101319;
+      --surface-2: #151922;
+      --border: rgba(255,255,255,.09);
+      --text: #f4f5f7;
+      --muted: #9da4b0;
+      --accent: #ffffff;
+      --radius: 22px;
+      --max-width: 1380px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(255,255,255,.07), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(255,255,255,.045), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(9,11,15,.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
+      letter-spacing: -.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: white;
+      color: #090b0f;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 110px 0 80px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.035);
+      color: #c7ccd5;
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      max-width: 920px;
+      margin: auto;
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: .98;
+      letter-spacing: -.065em;
+    }
+
+    .hero h1 span {
+      color: #9299a6;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 28px auto 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .primary-button,
+    .secondary-button {
+      padding: 13px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .primary-button {
+      border: 1px solid white;
+      background: white;
+      color: #090b0f;
+      font-weight: 700;
+    }
+
+    .secondary-button {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      color: white;
+    }
+
+    .primary-button:hover,
+    .secondary-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 12px;
+      margin-bottom: 100px;
+    }
+
+    .stat {
+      padding: 25px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.025);
+      border-radius: 18px;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .stat-label {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px,4vw,52px);
+      letter-spacing: -.045em;
+      line-height: 1;
+    }
+
+    .section-heading p {
+      max-width: 500px;
+      color: var(--muted);
+    }
+
+    /* FILTERS */
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 30px;
+    }
+
+    .filter {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      color: #aeb5c0;
+      padding: 9px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: .2s ease;
+    }
+
+    .filter:hover,
+    .filter.active {
+      background: white;
+      color: #090b0f;
+      border-color: white;
+    }
+
+    /* SEARCH */
+
+    .search {
+      width: 100%;
+      max-width: 380px;
+      padding: 13px 16px;
+      border-radius: 13px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      color: white;
+      outline: none;
+      margin-bottom: 28px;
+    }
+
+    .search:focus {
+      border-color: rgba(255,255,255,.35);
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      columns: 3 320px;
+      column-gap: 18px;
+    }
+
+    .card {
+      break-inside: avoid;
+      margin-bottom: 18px;
+      border: 1px solid var(--border);
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.018)
+      );
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,.2);
+      box-shadow: 0 25px 70px rgba(0,0,0,.35);
+    }
+
+    .image-wrap {
+      background: #0d1015;
+      overflow: hidden;
+    }
+
+    .card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform .45s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.025);
+    }
+
+    .card-content {
+      padding: 18px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      color: #8f97a4;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      margin-top: 8px;
+      font-size: 20px;
+      font-weight: 750;
+      letter-spacing: -.025em;
+    }
+
+    .card-description {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* LOADING */
+
+    .loading {
+      padding: 80px 20px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .loading-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin: 0 4px;
+      border-radius: 50%;
+      background: white;
+      animation: pulse 1s infinite alternate;
+    }
+
+    .loading-dot:nth-child(2) {
+      animation-delay: .2s;
+    }
+
+    .loading-dot:nth-child(3) {
+      animation-delay: .4s;
+    }
+
+    @keyframes pulse {
+      from { opacity: .2; transform: translateY(0); }
+      to { opacity: 1; transform: translateY(-4px); }
+    }
+
+    /* EMPTY */
+
+    .empty {
+      padding: 70px 20px;
+      text-align: center;
+      border: 1px dashed var(--border);
+      border-radius: 22px;
+      color: var(--muted);
+    }
+
+    /* JOURNEY */
+
+    .journey {
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      padding: 10px 0 25px;
+    }
+
+    .journey-step {
+      flex: 0 0 auto;
+      min-width: 150px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .journey-number {
+      color: #777f8d;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+    }
+
+    .journey-title {
+      margin-top: 6px;
+      font-weight: 750;
+    }
+
+    .journey-arrow {
+      padding: 0 14px;
+      color: #5f6672;
+      font-size: 20px;
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.92);
+      backdrop-filter: blur(14px);
+      padding: 25px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-image {
+      max-width: min(90vw, 1400px);
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 30px 100px rgba(0,0,0,.6);
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: fixed;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.08);
+      color: white;
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      z-index: 1002;
+    }
+
+    .lightbox-close {
+      top: 22px;
+      right: 22px;
+    }
+
+    .lightbox-prev {
+      left: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-next {
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-info {
+      position: fixed;
+      left: 25px;
+      bottom: 22px;
+      color: white;
+      z-index: 1002;
+    }
+
+    .lightbox-title {
+      font-size: 17px;
+      font-weight: 750;
+    }
+
+    .lightbox-meta {
+      margin-top: 2px;
+      color: #9ca3af;
+      font-size: 12px;
+    }
+
+    .counter {
+      position: fixed;
+      right: 25px;
+      bottom: 22px;
+      color: #9ca3af;
+      font-size: 12px;
+      z-index: 1002;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 100px;
+      padding: 50px 0;
+      border-top: 1px solid var(--border);
+      color: #737b88;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 800px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max-width));
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 80px 0 60px;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2,1fr);
+        margin-bottom: 50px;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading p {
+        margin-top: 15px;
+      }
+
+      .gallery {
+        columns: 1;
+      }
+
+      .lightbox-prev {
+        left: 10px;
+      }
+
+      .lightbox-next {
+        right: 10px;
+      }
+
+      .lightbox-info {
+        left: 15px;
+        bottom: 15px;
+      }
+
+      .counter {
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <span class="brand-mark">A</span>
+        <span>Funnel Portfolio</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#journey">Journey</a>
+        <a href="#about">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+
+      <div class="eyebrow">
+        Visual Funnel Portfolio
+      </div>
+
+      <h1>
+        Funnels designed to
+        <span>move people forward.</span>
+      </h1>
+
+      <p>
+        Explore a collection of funnel experiences, mindmaps, and digital
+        assets — organized automatically by project, niche, and asset type.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#work" class="primary-button">
+          Explore the Work
+        </a>
+
+        <a href="#journey" class="secondary-button">
+          See the Journey
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <main>
+
+    <div class="container">
+      <div class="stats">
+
+        <div class="stat">
+          <div class="stat-number" id="projectCount">—</div>
+          <div class="stat-label">Projects</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number" id="nicheCount">—</div>
+          <div class="stat-label">Niches</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number" id="assetCount">—</div>
+          <div class="stat-label">Assets</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number" id="funnelCount">—</div>
+          <div class="stat-label">Funnel Steps</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- WORK -->
+    <section id="work">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">Selected Work</div>
+            <h2>Explore the portfolio.</h2>
+          </div>
+
+          <p>
+            Browse every visual asset and explore each funnel step in
+            full-screen detail.
+          </p>
+        </div>
+
+        <input
+          id="search"
+          class="search"
+          type="search"
+          placeholder="Search projects, niches, or asset types..."
+        />
+
+        <div id="filters" class="filters"></div>
+
+        <div id="gallery" class="gallery">
+          <div class="loading">
+            Loading your portfolio
+            <span class="loading-dot"></span>
+            <span class="loading-dot"></span>
+            <span class="loading-dot"></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section id="journey">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">Funnel Journey</div>
+            <h2>Every step has a purpose.</h2>
+          </div>
+
+          <p>
+            Funnel assets are automatically ordered using their step numbers.
+          </p>
+        </div>
+
+        <div id="journeyContent" class="journey"></div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">The System</div>
+            <h2>Built around the work.</h2>
+          </div>
+
+          <p>
+            The portfolio understands the naming structure of every uploaded
+            asset and turns it into a visual library automatically.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>
+        © <span id="year"></span> Funnel Portfolio. Built with intention.
+      </p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+
+    <button class="lightbox-close" id="closeLightbox" aria-label="Close">
+      ×
+    </button>
+
+    <button class="lightbox-prev" id="prevImage" aria-label="Previous">
+      ‹
+    </button>
+
+    <img
+      id="lightboxImage"
+      class="lightbox-image"
+      src=""
+      alt=""
+    />
+
+    <button class="lightbox-next" id="nextImage" aria-label="Next">
+      ›
+    </button>
+
+    <div class="lightbox-info">
+      <div id="lightboxTitle" class="lightbox-title"></div>
+      <div id="lightboxMeta" class="lightbox-meta"></div>
+    </div>
+
+    <div id="counter" class="counter"></div>
+
+  </div>
+
+  <script>
+    const OWNER = "auongamar";
+    const REPO = "portfolio";
+    const BRANCH = "main";
+
+    let assets = [];
+    let filteredAssets = [];
+    let currentIndex = 0;
+    let activeFilter = "All";
+
+    const imageExtensions = [
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".webp",
+      ".gif",
+      ".avif"
+    ];
+
+    /*
+      Filename examples:
+
+      P01-Cleaning-Funnel-Step1.png
+      P01-Cleaning-MindMap-Map10.png
+      P02-DentalService-Funnel-Step2.png
+      P07-Lawyer Funnel-Funnel-Step1.png
+
+      Parser:
+      P## - Niche - AssetType - Identifier
+    */
+
+    function parseFilename(filename) {
+
+      const cleanName = filename.replace(/\.[^/.]+$/, "");
+
+      const match = cleanName.match(
+        /^P(\d+)-(.+?)-(Funnel|MindMap|Website|LandingPage|Automation)-(.+)$/i
+      );
+
+      if (!match) {
+        return {
+          project: "Other",
+          projectNumber: 9999,
+          niche: "Uncategorized",
+          assetType: "Other",
+          identifier: cleanName,
+          number: 9999,
+          original: filename
+        };
+      }
+
+      const projectNumber = parseInt(match[1], 10);
+
+      const niche = match[2]
+        .replace(/[-_]+/g, " ")
+        .trim();
+
+      const assetType = formatLabel(match[3]);
+
+      const identifier = match[4]
+        .replace(/[-_]+/g, " ")
+        .trim();
+
+      const numberMatch = identifier.match(/(\d+)/);
+      const number = numberMatch
+        ? parseInt(numberMatch[1], 10)
+        : 9999;
+
+      return {
+        project: `Project ${String(projectNumber).padStart(2, "0")}`,
+        projectNumber,
+        niche: formatLabel(niche),
+        assetType,
+        identifier: formatLabel(identifier),
+        number,
+        original: filename
+      };
+    }
+
+    function formatLabel(value) {
+
+      return value
+        .replace(/([a-z])([A-Z])/g, "$1 $2")
+        .replace(/[-_]+/g, " ")
+        .replace(/\b\w/g, char => char.toUpperCase())
+        .trim();
+    }
+
+    function rawUrl(filename) {
+
+      return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${encodeURIComponent(filename)}`;
+    }
+
+    async function loadRepository() {
+
+      const apiUrl =
+        `https://api.github.com/repos/${OWNER}/${REPO}/contents/`;
+
+      try {
+
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          throw new Error("Unable to access repository.");
+        }
+
+        const files = await response.json();
+
+        assets = files
+          .filter(file =>
+            file.type === "file" &&
+            imageExtensions.some(ext =>
+              file.name.toLowerCase().endsWith(ext)
+            )
+          )
+          .map(file => {
+
+            const parsed = parseFilename(file.name);
+
+            return {
+              ...parsed,
+              url: rawUrl(file.name)
+            };
+
+          });
+
+        assets.sort((a,b) => {
+
+          if (a.projectNumber !== b.projectNumber)
+            return a.projectNumber - b.projectNumber;
+
+          if (a.assetType !== b.assetType)
+            return a.assetType.localeCompare(b.assetType);
+
+          if (a.number !== b.number)
+            return a.number - b.number;
+
+          return a.original.localeCompare(b.original);
+
+        });
+
+        updateStats();
+        buildFilters();
+        renderGallery();
+        renderJourney();
+
+      } catch (error) {
+
+        document.getElementById("gallery").innerHTML = `
+          <div class="empty">
+            <h3>Portfolio could not be loaded.</h3>
+            <p style="margin-top:8px;">
+              Make sure the repository is public and the images are committed.
+            </p>
+          </div>
+        `;
+
+        console.error(error);
+      }
+    }
+
+    function updateStats() {
+
+      const projects = new Set(
+        assets.map(item => item.project)
+      );
+
+      const niches = new Set(
+        assets.map(item => item.niche)
+      );
+
+      const funnels = assets.filter(
+        item => item.assetType.toLowerCase() === "funnel"
+      );
+
+      document.getElementById("projectCount").textContent =
+        projects.size;
+
+      document.getElementById("nicheCount").textContent =
+        niches.size;
+
+      document.getElementById("assetCount").textContent =
+        assets.length;
+
+      document.getElementById("funnelCount").textContent =
+        funnels.length;
+    }
+
+    function buildFilters() {
+
+      const filters = document.getElementById("filters");
+
+      const values = [
+        "All",
+        ...new Set(assets.map(item => item.project)),
+        ...new Set(assets.map(item => item.niche)),
+        ...new Set(assets.map(item => item.assetType))
+      ];
+
+      filters.innerHTML = values
+        .map((value, index) => `
+          <button
+            class="filter ${index === 0 ? "active" : ""}"
+            data-filter="${escapeHtml(value)}"
+          >
+            ${escapeHtml(value)}
+          </button>
+        `)
+        .join("");
+
+      filters.querySelectorAll(".filter").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          activeFilter = button.dataset.filter;
+
+          filters.querySelectorAll(".filter")
+            .forEach(item => item.classList.remove("active"));
+
+          button.classList.add("active");
+
+          renderGallery();
+        });
+
+      });
+    }
+
+    function getFilteredAssets() {
+
+      const query =
+        document.getElementById("search").value
+          .toLowerCase()
+          .trim();
+
+      return assets.filter(item => {
+
+        const matchesFilter =
+          activeFilter === "All" ||
+          item.project === activeFilter ||
+          item.niche === activeFilter ||
+          item.assetType === activeFilter;
+
+        const searchable = [
+          item.project,
+          item.niche,
+          item.assetType,
+          item.identifier,
+          item.original
+        ]
+          .join(" ")
+          .toLowerCase();
+
+        const matchesSearch =
+          !query ||
+          searchable.includes(query);
+
+        return matchesFilter && matchesSearch;
+
+      });
+    }
+
+    function renderGallery() {
+
+      const gallery = document.getElementById("gallery");
+
+      filteredAssets = getFilteredAssets();
+
+      if (!filteredAssets.length) {
+
+        gallery.innerHTML = `
+          <div class="empty">
+            <h3>No assets found.</h3>
+            <p style="margin-top:8px;">
+              Try another search or filter.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+      gallery.innerHTML = filteredAssets
+        .map((item, index) => {
+
+          const isFunnel =
+            item.assetType.toLowerCase() === "funnel";
+
+          const title =
+            isFunnel
+              ? `${item.identifier}`
+              : item.identifier;
+
+          return `
+            <article
+              class="card"
+              data-index="${index}"
+              tabindex="0"
+            >
+
+              <div class="image-wrap">
+                <img
+                  src="${item.url}"
+                  alt="${escapeHtml(
+                    `${item.project} ${item.niche} ${item.assetType} ${item.identifier}`
+                  )}"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-content">
+
+                <div class="meta">
+                  <span>${escapeHtml(item.project)}</span>
+                  <span>•</span>
+                  <span>${escapeHtml(item.niche)}</span>
+                  <span>•</span>
+                  <span>${escapeHtml(item.assetType)}</span>
+                </div>
+
+                <div class="card-title">
+                  ${escapeHtml(title)}
+                </div>
+
+                <div class="card-description">
+                  ${isFunnel
+                    ? "Funnel journey step"
+                    : `${escapeHtml(item.assetType)} asset`}
+                </div>
+
+              </div>
+
+            </article>
+          `;
+
+        })
+        .join("");
+
+      gallery.querySelectorAll(".card").forEach(card => {
+
+        card.addEventListener("click", () => {
+
+          openLightbox(
+            parseInt(card.dataset.index, 10)
+          );
+
+        });
+
+        card.addEventListener("keydown", event => {
+
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+
+            event.preventDefault();
+
+            openLightbox(
+              parseInt(card.dataset.index, 10)
+            );
+
+          }
+
+        });
+
+      });
+    }
+
+    function renderJourney() {
+
+      const container =
+        document.getElementById("journeyContent");
+
+      const funnels = assets
+        .filter(item =>
+          item.assetType.toLowerCase() === "funnel"
+        )
+        .sort((a,b) => {
+
+          if (a.projectNumber !== b.projectNumber)
+            return a.projectNumber - b.projectNumber;
+
+          return a.number - b.number;
+
+        });
+
+      if (!funnels.length) {
+
+        container.innerHTML = `
+          <div class="empty">
+            Funnel steps will appear here automatically.
+          </div>
+        `;
+
+        return;
+      }
+
+      /*
+        Show the first funnel's journey.
+        The portfolio can contain many projects,
+        so the main gallery handles the complete collection.
+      */
+
+      const firstProject = funnels[0].project;
+
+      const firstFunnel = funnels
+        .filter(item => item.project === firstProject);
+
+      container.innerHTML = firstFunnel
+        .map((item, index) => {
+
+          const step =
+            item.identifier
+              .replace(/[^0-9]/g, "") ||
+              String(index + 1);
+
+          return `
+            ${index > 0
+              ? `<div class="journey-arrow">→</div>`
+              : ""}
+
+            <div class="journey-step">
+
+              <div class="journey-number">
+                STEP ${String(step).padStart(2, "0")}
+              </div>
+
+              <div class="journey-title">
+                ${escapeHtml(item.identifier)}
+              </div>
+
+            </div>
+          `;
+
+        })
+        .join("");
+    }
+
+    function openLightbox(index) {
+
+      currentIndex = index;
+
+      const item = filteredAssets[currentIndex];
+
+      if (!item) return;
+
+      document
+        .getElementById("lightbox")
+        .classList.add("open");
+
+      document
+        .getElementById("lightboxImage")
+        .src = item.url;
+
+      document
+        .getElementById("lightboxImage")
+        .alt = item.original;
+
+      document
+        .getElementById("lightboxTitle")
+        .textContent = item.identifier;
+
+      document
+        .getElementById("lightboxMeta")
+        .textContent =
+          `${item.project} · ${item.niche} · ${item.assetType}`;
+
+      document
+        .getElementById("counter")
+        .textContent =
+          `${currentIndex + 1} / ${filteredAssets.length}`;
+
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+
+      document
+        .getElementById("lightbox")
+        .classList.remove("open");
+
+      document.body.style.overflow = "";
+    }
+
+    function nextImage() {
+
+      currentIndex =
+        (currentIndex + 1) %
+        filteredAssets.length;
+
+      openLightbox(currentIndex);
+    }
+
+    function previousImage() {
+
+      currentIndex =
+        (currentIndex - 1 + filteredAssets.length) %
+        filteredAssets.length;
+
+      openLightbox(currentIndex);
+    }
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    document
+      .getElementById("closeLightbox")
+      .addEventListener("click", closeLightbox);
+
+    document
+      .getElementById("nextImage")
+      .addEventListener("click", nextImage);
+
+    document
+      .getElementById("prevImage")
+      .addEventListener("click", previousImage);
+
+    document
+      .getElementById("lightbox")
+      .addEventListener("click", event => {
+
+        if (event.target.id === "lightbox") {
+          closeLightbox();
+        }
+
+      });
+
+    document
+      .getElementById("search")
+      .addEventListener("input", renderGallery);
+
+    document.addEventListener("keydown", event => {
+
+      const lightbox =
+        document.getElementById("lightbox");
+
+      if (!lightbox.classList.contains("open"))
+        return;
+
+      if (event.key === "Escape")
+        closeLightbox();
+
+      if (event.key === "ArrowRight")
+        nextImage();
+
+      if (event.key === "ArrowLeft")
+        previousImage();
+
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    loadRepository();
+  </script>
+
+</body>
+</html>
