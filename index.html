@@ -792,9 +792,11 @@
   </div>
 
   <script>
-    const OWNER = "auongamar";
-    const REPO = "portfolio";
-    const BRANCH = "main";
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+
+    const OWNER = window.location.hostname.replace('.github.io', '');
+    const REPO = pathParts[0] || 'portfolio';
+    const BRANCH = 'main';
 
     let assets = [];
     let filteredAssets = [];
@@ -880,9 +882,8 @@
     }
 
     function rawUrl(filename) {
-
-      return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${encodeURIComponent(filename)}`;
-    }
+    return `./${encodeURIComponent(filename)}`;
+}
 
     async function loadRepository() {
 
